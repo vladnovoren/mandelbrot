@@ -98,9 +98,11 @@ void ExecApp() {
     App app = {};
     InitApp(&app);
 
+    time_t cur_time = 0;
     bool quit = false;
     SDL_Event event = {};
     while (!quit) {
+        cur_time = SDL_GetTicks();
         while (SDL_PollEvent(&event)) {
             switch (event.type) {
                 case SDL_QUIT:
@@ -140,6 +142,7 @@ void ExecApp() {
         }
         FillMandelbrot(&app);
         SDL_UpdateWindowSurface(app.main_win.window);
+        printf("FPS: %lf\n", 1000.0 / (SDL_GetTicks() - cur_time));
     }
     DestructApp(&app);
 }
