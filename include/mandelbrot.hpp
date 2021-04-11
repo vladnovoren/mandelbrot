@@ -19,7 +19,7 @@ printf("%s\n", SDL_GetError());
 static const int    SCREEN_WIDTH    = 800;
 static const int    SCREEN_HEIGHT   = 600;
 
-static const int    HALF_SCREEN_WIDTH = SCREEN_WIDTH / 2;
+static const int    HALF_SCREEN_WIDTH  = SCREEN_WIDTH / 2;
 static const int    HALF_SCREEN_HEIGHT = SCREEN_HEIGHT / 2;
 
 
@@ -64,5 +64,5 @@ void FillMandelbrot(App *app);
 void ExecApp();
 
 
-#endif /* mandelbrot.hpp  */
+#endif /* mandelbrot.cpp  */
 

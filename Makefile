@@ -1,5 +1,5 @@
 TARGET=bin/mandelbrot.out
-CC=g++
+CC=g++ -O3
 SDL=`sdl2-config --cflags --libs`
 CFLAGS=# `sdl2-config --flags` 
 LIBS=libs/mandelbrot.o $(SDL)
