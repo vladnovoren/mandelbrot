@@ -5,12 +5,23 @@ LIBS=libs/mandelbrot.o $(SDL)
 
 all: avx2
 
-mandelbrot_o: src/mandelbrot.cpp include/mandelbrot.hpp
+libs_dir:
+	mkdir -p libs
+
+bin_dir:
+	mkdir -p bin
+
+mandelbrot_o: libs_dir src/mandelbrot.cpp include/mandelbrot.hpp
 	$(CC) -c src/mandelbrot.cpp -o libs/mandelbrot.o $(SDL)
 
-main_o: src/main.cpp
+main_o: libs_dir src/main.cpp
 	$(CC) -c src/main.cpp -o libs/main.o $(SDL)
 
-avx2: mandelbrot_o main_o
+avx2: bin_dir mandelbrot_o main_o
 	mkdir -p bin
 	$(CC) libs/main.o -o $(TARGET) $(LIBS)
+
+clean:
+	rm ./bin/*.out
+	rm ./libs/*.o
+	cd ..
